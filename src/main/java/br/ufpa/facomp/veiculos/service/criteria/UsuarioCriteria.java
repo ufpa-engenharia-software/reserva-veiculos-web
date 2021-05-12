@@ -103,6 +103,8 @@ public class UsuarioCriteria implements Serializable, Criteria {
 
     private NivelCNHFilter nivelCNH;
 
+    private LongFilter userId;
+
     private LongFilter minhasSolicitacoesId;
 
     private LongFilter comoAutorizadorId;
@@ -126,6 +128,7 @@ public class UsuarioCriteria implements Serializable, Criteria {
         this.ativo = other.ativo == null ? null : other.ativo.copy();
         this.criado = other.criado == null ? null : other.criado.copy();
         this.nivelCNH = other.nivelCNH == null ? null : other.nivelCNH.copy();
+        this.userId = other.userId == null ? null : other.userId.copy();
         this.minhasSolicitacoesId = other.minhasSolicitacoesId == null ? null : other.minhasSolicitacoesId.copy();
         this.comoAutorizadorId = other.comoAutorizadorId == null ? null : other.comoAutorizadorId.copy();
         this.comoMotoristaId = other.comoMotoristaId == null ? null : other.comoMotoristaId.copy();
@@ -317,6 +320,21 @@ public class UsuarioCriteria implements Serializable, Criteria {
         this.nivelCNH = nivelCNH;
     }
 
+    public LongFilter getUserId() {
+        return userId;
+    }
+
+    public LongFilter userId() {
+        if (userId == null) {
+            userId = new LongFilter();
+        }
+        return userId;
+    }
+
+    public void setUserId(LongFilter userId) {
+        this.userId = userId;
+    }
+
     public LongFilter getMinhasSolicitacoesId() {
         return minhasSolicitacoesId;
     }
@@ -399,6 +417,7 @@ public class UsuarioCriteria implements Serializable, Criteria {
             Objects.equals(ativo, that.ativo) &&
             Objects.equals(criado, that.criado) &&
             Objects.equals(nivelCNH, that.nivelCNH) &&
+            Objects.equals(userId, that.userId) &&
             Objects.equals(minhasSolicitacoesId, that.minhasSolicitacoesId) &&
             Objects.equals(comoAutorizadorId, that.comoAutorizadorId) &&
             Objects.equals(comoMotoristaId, that.comoMotoristaId) &&
@@ -421,6 +440,7 @@ public class UsuarioCriteria implements Serializable, Criteria {
             ativo,
             criado,
             nivelCNH,
+            userId,
             minhasSolicitacoesId,
             comoAutorizadorId,
             comoMotoristaId,
@@ -444,6 +464,7 @@ public class UsuarioCriteria implements Serializable, Criteria {
             (ativo != null ? "ativo=" + ativo + ", " : "") +
             (criado != null ? "criado=" + criado + ", " : "") +
             (nivelCNH != null ? "nivelCNH=" + nivelCNH + ", " : "") +
+            (userId != null ? "userId=" + userId + ", " : "") +
             (minhasSolicitacoesId != null ? "minhasSolicitacoesId=" + minhasSolicitacoesId + ", " : "") +
             (comoAutorizadorId != null ? "comoAutorizadorId=" + comoAutorizadorId + ", " : "") +
             (comoMotoristaId != null ? "comoMotoristaId=" + comoMotoristaId + ", " : "") +

@@ -65,6 +65,10 @@ public class Usuario implements Serializable {
     @Column(name = "nivel_cnh")
     private NivelCNH nivelCNH;
 
+    @OneToOne
+    @JoinColumn(unique = true)
+    private User user;
+
     @OneToMany(mappedBy = "solicitante")
     @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
     @JsonIgnoreProperties(
@@ -249,6 +253,19 @@ public class Usuario implements Serializable {
 
     public void setNivelCNH(NivelCNH nivelCNH) {
         this.nivelCNH = nivelCNH;
+    }
+
+    public User getUser() {
+        return this.user;
+    }
+
+    public Usuario user(User user) {
+        this.setUser(user);
+        return this;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 
     public Set<Solicitacao> getMinhasSolicitacoes() {

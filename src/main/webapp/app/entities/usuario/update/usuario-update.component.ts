@@ -3,13 +3,15 @@ import { HttpResponse } from '@angular/common/http';
 import { FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
-import { finalize } from 'rxjs/operators';
+import { finalize, map } from 'rxjs/operators';
 
 import * as dayjs from 'dayjs';
 import { DATE_TIME_FORMAT } from 'app/config/input.constants';
 
 import { IUsuario, Usuario } from '../usuario.model';
 import { UsuarioService } from '../service/usuario.service';
+import { IUser } from 'app/entities/user/user.model';
+import { UserService } from 'app/entities/user/user.service';
 
 @Component({
   selector: 'jhi-usuario-update',
@@ -17,6 +19,8 @@ import { UsuarioService } from '../service/usuario.service';
 })
 export class UsuarioUpdateComponent implements OnInit {
   isSaving = false;
+
+  usersSharedCollection: IUser[] = [];
 
   editForm = this.fb.group({
     id: [],
@@ -31,9 +35,15 @@ export class UsuarioUpdateComponent implements OnInit {
     ativo: [],
     criado: [],
     nivelCNH: [],
+    user: [],
   });
 
-  constructor(protected usuarioService: UsuarioService, protected activatedRoute: ActivatedRoute, protected fb: FormBuilder) {}
+  constructor(
+    protected usuarioService: UsuarioService,
+    protected userService: UserService,
+    protected activatedRoute: ActivatedRoute,
+    protected fb: FormBuilder
+  ) {}
 
   ngOnInit(): void {
     this.activatedRoute.data.subscribe(({ usuario }) => {
@@ -43,6 +53,8 @@ export class UsuarioUpdateComponent implements OnInit {
       }
 
       this.updateForm(usuario);
+
+      this.loadRelationshipsOptions();
     });
   }
 
@@ -58,6 +70,10 @@ export class UsuarioUpdateComponent implements OnInit {
     } else {
       this.subscribeToSaveResponse(this.usuarioService.create(usuario));
     }
+  }
+
+  trackUserById(index: number, item: IUser): number {
+    return item.id!;
   }
 
   protected subscribeToSaveResponse(result: Observable<HttpResponse<IUsuario>>): void {
@@ -93,7 +109,18 @@ export class UsuarioUpdateComponent implements OnInit {
       ativo: usuario.ativo,
       criado: usuario.criado ? usuario.criado.format(DATE_TIME_FORMAT) : null,
       nivelCNH: usuario.nivelCNH,
+      user: usuario.user,
     });
+
+    this.usersSharedCollection = this.userService.addUserToCollectionIfMissing(this.usersSharedCollection, usuario.user);
+  }
+
+  protected loadRelationshipsOptions(): void {
+    this.userService
+      .query()
+      .pipe(map((res: HttpResponse<IUser[]>) => res.body ?? []))
+      .pipe(map((users: IUser[]) => this.userService.addUserToCollectionIfMissing(users, this.editForm.get('user')!.value)))
+      .subscribe((users: IUser[]) => (this.usersSharedCollection = users));
   }
 
   protected createFromForm(): IUsuario {
@@ -111,6 +138,7 @@ export class UsuarioUpdateComponent implements OnInit {
       ativo: this.editForm.get(['ativo'])!.value,
       criado: this.editForm.get(['criado'])!.value ? dayjs(this.editForm.get(['criado'])!.value, DATE_TIME_FORMAT) : undefined,
       nivelCNH: this.editForm.get(['nivelCNH'])!.value,
+      user: this.editForm.get(['user'])!.value,
     };
   }
 }

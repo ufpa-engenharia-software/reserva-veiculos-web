@@ -38,6 +38,8 @@ public class UsuarioDTO implements Serializable {
 
     private NivelCNH nivelCNH;
 
+    private UserDTO user;
+
     public Long getId() {
         return id;
     }
@@ -134,6 +136,14 @@ public class UsuarioDTO implements Serializable {
         this.nivelCNH = nivelCNH;
     }
 
+    public UserDTO getUser() {
+        return user;
+    }
+
+    public void setUser(UserDTO user) {
+        this.user = user;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) {
@@ -171,6 +181,7 @@ public class UsuarioDTO implements Serializable {
             ", ativo='" + getAtivo() + "'" +
             ", criado='" + getCriado() + "'" +
             ", nivelCNH='" + getNivelCNH() + "'" +
+            ", user=" + getUser() +
             "}";
     }
 }

@@ -55,7 +55,7 @@ public class Veiculo implements Serializable {
         inverseJoinColumns = @JoinColumn(name = "motoristas_habilitados_id")
     )
     @JsonIgnoreProperties(
-        value = { "minhasSolicitacoes", "comoAutorizadors", "comoMotoristas", "veiculosHabilitados" },
+        value = { "user", "minhasSolicitacoes", "comoAutorizadors", "comoMotoristas", "veiculosHabilitados" },
         allowSetters = true
     )
     private Set<Usuario> motoristasHabilitados = new HashSet<>();

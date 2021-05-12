@@ -8,8 +8,11 @@ import org.mapstruct.*;
 /**
  * Mapper for the entity {@link Usuario} and its DTO {@link UsuarioDTO}.
  */
-@Mapper(componentModel = "spring", uses = {})
+@Mapper(componentModel = "spring", uses = { UserMapper.class })
 public interface UsuarioMapper extends EntityMapper<UsuarioDTO, Usuario> {
+    @Mapping(target = "user", source = "user", qualifiedByName = "login")
+    UsuarioDTO toDto(Usuario s);
+
     @Named("nomeSet")
     @BeanMapping(ignoreByDefault = true)
     @Mapping(target = "id", source = "id")

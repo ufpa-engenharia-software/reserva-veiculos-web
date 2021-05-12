@@ -8,6 +8,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 import br.ufpa.facomp.veiculos.IntegrationTest;
 import br.ufpa.facomp.veiculos.domain.Solicitacao;
+import br.ufpa.facomp.veiculos.domain.User;
 import br.ufpa.facomp.veiculos.domain.Usuario;
 import br.ufpa.facomp.veiculos.domain.Veiculo;
 import br.ufpa.facomp.veiculos.domain.enumeration.Identificador;
@@ -1029,6 +1030,25 @@ class UsuarioResourceIT {
 
         // Get all the usuarioList where nivelCNH is null
         defaultUsuarioShouldNotBeFound("nivelCNH.specified=false");
+    }
+
+    @Test
+    @Transactional
+    void getAllUsuariosByUserIsEqualToSomething() throws Exception {
+        // Initialize the database
+        usuarioRepository.saveAndFlush(usuario);
+        User user = UserResourceIT.createEntity(em);
+        em.persist(user);
+        em.flush();
+        usuario.setUser(user);
+        usuarioRepository.saveAndFlush(usuario);
+        Long userId = user.getId();
+
+        // Get all the usuarioList where user equals to userId
+        defaultUsuarioShouldBeFound("userId.equals=" + userId);
+
+        // Get all the usuarioList where user equals to (userId + 1)
+        defaultUsuarioShouldNotBeFound("userId.equals=" + (userId + 1));
     }
 
     @Test

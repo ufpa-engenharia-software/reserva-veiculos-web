@@ -119,6 +119,12 @@ public class UsuarioQueryService extends QueryService<Usuario> {
             if (criteria.getNivelCNH() != null) {
                 specification = specification.and(buildSpecification(criteria.getNivelCNH(), Usuario_.nivelCNH));
             }
+            if (criteria.getUserId() != null) {
+                specification =
+                    specification.and(
+                        buildSpecification(criteria.getUserId(), root -> root.join(Usuario_.user, JoinType.LEFT).get(User_.id))
+                    );
+            }
             if (criteria.getMinhasSolicitacoesId() != null) {
                 specification =
                     specification.and(
