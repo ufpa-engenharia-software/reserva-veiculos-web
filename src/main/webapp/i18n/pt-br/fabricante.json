@@ -1,0 +1,25 @@
+{
+  "reservaVeiculosApp": {
+    "fabricante": {
+      "home": {
+        "title": "Fabricantes",
+        "refreshListLabel": "Atualizar lista",
+        "createLabel": "Criar novo Fabricante",
+        "createOrEditLabel": "Criar ou editar Fabricante",
+        "notFound": "Nenhum Fabricante encontrado"
+      },
+      "created": "Um novo Fabricante foi criado com o identificador {{ param }}",
+      "updated": "Um Fabricante foi atualizado com o identificador {{ param }}",
+      "deleted": "Um Fabricante foi excluído com o identificador {{ param }}",
+      "delete": {
+        "question": "Tem certeza de que deseja excluir Fabricante {{ id }}?"
+      },
+      "detail": {
+        "title": "Fabricante"
+      },
+      "id": "ID",
+      "nome": "Nome",
+      "criado": "Criado"
+    }
+  }
+}

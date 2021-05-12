@@ -48,6 +48,18 @@ public class CacheConfiguration {
             createCache(cm, br.ufpa.facomp.veiculos.domain.User.class.getName());
             createCache(cm, br.ufpa.facomp.veiculos.domain.Authority.class.getName());
             createCache(cm, br.ufpa.facomp.veiculos.domain.User.class.getName() + ".authorities");
+            createCache(cm, br.ufpa.facomp.veiculos.domain.Usuario.class.getName());
+            createCache(cm, br.ufpa.facomp.veiculos.domain.Usuario.class.getName() + ".minhasSolicitacoes");
+            createCache(cm, br.ufpa.facomp.veiculos.domain.Usuario.class.getName() + ".comoAutorizadors");
+            createCache(cm, br.ufpa.facomp.veiculos.domain.Usuario.class.getName() + ".comoMotoristas");
+            createCache(cm, br.ufpa.facomp.veiculos.domain.Usuario.class.getName() + ".veiculosHabilitados");
+            createCache(cm, br.ufpa.facomp.veiculos.domain.Fabricante.class.getName());
+            createCache(cm, br.ufpa.facomp.veiculos.domain.Veiculo.class.getName());
+            createCache(cm, br.ufpa.facomp.veiculos.domain.Veiculo.class.getName() + ".motoristasHabilitados");
+            createCache(cm, br.ufpa.facomp.veiculos.domain.Manutencao.class.getName());
+            createCache(cm, br.ufpa.facomp.veiculos.domain.CategoriaVeiculo.class.getName());
+            createCache(cm, br.ufpa.facomp.veiculos.domain.Solicitacao.class.getName());
+            createCache(cm, br.ufpa.facomp.veiculos.domain.AvaliacaoSolicitacao.class.getName());
             // jhipster-needle-ehcache-add-entry
         };
     }

@@ -1,0 +1,10 @@
+{
+  "reservaVeiculosApp": {
+    "Identificador": {
+      "null": "",
+      "SIAPE": "SIAPE",
+      "MATRICULA_SIGAA": "MATRICULA_SIGAA",
+      "CNH": "CNH"
+    }
+  }
+}

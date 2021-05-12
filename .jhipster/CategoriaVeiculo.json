@@ -1,0 +1,45 @@
+{
+  "name": "CategoriaVeiculo",
+  "fields": [
+    {
+      "fieldName": "nome",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "capacidadePessoas",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "capacidadePeso",
+      "fieldType": "Double"
+    },
+    {
+      "fieldName": "capacidadeArea",
+      "fieldType": "Double"
+    },
+    {
+      "fieldName": "eixos",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "altura",
+      "fieldType": "Double"
+    },
+    {
+      "fieldName": "nivelCNH",
+      "fieldType": "NivelCNH",
+      "fieldValues": "A,B,C,D,E"
+    }
+  ],
+  "relationships": [],
+  "entityTableName": "categoria_veiculo",
+  "dto": "mapstruct",
+  "pagination": "pagination",
+  "service": "serviceImpl",
+  "jpaMetamodelFiltering": true,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "applications": "*",
+  "changelogDate": "20210512125152"
+}

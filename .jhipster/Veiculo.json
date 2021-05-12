@@ -1,0 +1,60 @@
+{
+  "name": "Veiculo",
+  "fields": [
+    {
+      "fieldName": "placa",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "modelo",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "ano",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "disponivel",
+      "fieldType": "Boolean"
+    },
+    {
+      "fieldName": "criado",
+      "fieldType": "ZonedDateTime"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "fabricante",
+      "otherEntityRelationshipName": "veiculo",
+      "relationshipName": "fabricante",
+      "otherEntityField": "nome"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "categoriaVeiculo",
+      "otherEntityRelationshipName": "veiculo",
+      "relationshipName": "categoria",
+      "otherEntityField": "nome"
+    },
+    {
+      "relationshipType": "many-to-many",
+      "otherEntityName": "usuario",
+      "otherEntityRelationshipName": "veiculosHabilitados",
+      "relationshipName": "motoristasHabilitados",
+      "otherEntityField": "nome",
+      "ownerSide": true
+    }
+  ],
+  "entityTableName": "veiculo",
+  "dto": "mapstruct",
+  "pagination": "pagination",
+  "service": "serviceImpl",
+  "jpaMetamodelFiltering": true,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "applications": "*",
+  "changelogDate": "20210512125150"
+}

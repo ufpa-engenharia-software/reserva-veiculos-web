@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.3.xsd">
+    <!--
+        Added the constraints for entity Veiculo.
+    -->
+    <changeSet id="20210512125150-2" author="jhipster">
+
+        <addForeignKeyConstraint baseColumnNames="fabricante_id"
+                                 baseTableName="veiculo"
+                                 constraintName="fk_veiculo__fabricante_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="fabricante"/>
+
+        <addForeignKeyConstraint baseColumnNames="categoria_id"
+                                 baseTableName="veiculo"
+                                 constraintName="fk_veiculo__categoria_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="categoria_veiculo"/>
+
+        <addForeignKeyConstraint baseColumnNames="veiculo_id"
+                                 baseTableName="rel_veiculo__motoristas_habilitados"
+                                 constraintName="fk_rel_veiculo__motoristas_habilitados__veiculo_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="veiculo"/>
+
+        <addForeignKeyConstraint baseColumnNames="motoristas_habilitados_id"
+                                 baseTableName="rel_veiculo__motoristas_habilitados"
+                                 constraintName="fk_rel_veiculo__motoristas_habi__motoristas_habilitados_6a_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="usuario"/>
+    </changeSet>
+</databaseChangeLog>

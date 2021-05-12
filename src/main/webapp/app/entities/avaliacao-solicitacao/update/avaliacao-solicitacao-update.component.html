@@ -1,0 +1,120 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2
+        id="jhi-avaliacao-solicitacao-heading"
+        data-cy="AvaliacaoSolicitacaoCreateUpdateHeading"
+        jhiTranslate="reservaVeiculosApp.avaliacaoSolicitacao.home.createOrEditLabel"
+      >
+        Create or edit a Avaliacao Solicitacao
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="form-group" [hidden]="editForm.get('id')!.value == null">
+          <label class="form-control-label" jhiTranslate="global.field.id" for="field_id">ID</label>
+          <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="reservaVeiculosApp.avaliacaoSolicitacao.valorGasolina" for="field_valorGasolina"
+            >Valor Gasolina</label
+          >
+          <input
+            type="number"
+            class="form-control"
+            name="valorGasolina"
+            id="field_valorGasolina"
+            data-cy="valorGasolina"
+            formControlName="valorGasolina"
+          />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="reservaVeiculosApp.avaliacaoSolicitacao.totalGasto" for="field_totalGasto"
+            >Total Gasto</label
+          >
+          <input
+            type="number"
+            class="form-control"
+            name="totalGasto"
+            id="field_totalGasto"
+            data-cy="totalGasto"
+            formControlName="totalGasto"
+          />
+        </div>
+
+        <div class="form-group">
+          <label
+            class="form-control-label"
+            jhiTranslate="reservaVeiculosApp.avaliacaoSolicitacao.statusSolicitacao"
+            for="field_statusSolicitacao"
+            >Status Solicitacao</label
+          >
+          <select
+            class="form-control"
+            name="statusSolicitacao"
+            formControlName="statusSolicitacao"
+            id="field_statusSolicitacao"
+            data-cy="statusSolicitacao"
+          >
+            <option [ngValue]="null">{{ 'reservaVeiculosApp.Status.null' | translate }}</option>
+            <option value="PENDENTE">{{ 'reservaVeiculosApp.Status.PENDENTE' | translate }}</option>
+            <option value="DEFERIDO">{{ 'reservaVeiculosApp.Status.DEFERIDO' | translate }}</option>
+            <option value="INDEFERIDO">{{ 'reservaVeiculosApp.Status.INDEFERIDO' | translate }}</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label
+            class="form-control-label"
+            jhiTranslate="reservaVeiculosApp.avaliacaoSolicitacao.justificativaStatus"
+            for="field_justificativaStatus"
+            >Justificativa Status</label
+          >
+          <textarea
+            class="form-control"
+            name="justificativaStatus"
+            id="field_justificativaStatus"
+            data-cy="justificativaStatus"
+            formControlName="justificativaStatus"
+          ></textarea>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="reservaVeiculosApp.avaliacaoSolicitacao.solicitacao" for="field_solicitacao"
+            >Solicitacao</label
+          >
+          <select class="form-control" id="field_solicitacao" data-cy="solicitacao" name="solicitacao" formControlName="solicitacao">
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="
+                solicitacaoOption.id === editForm.get('solicitacao')!.value?.id ? editForm.get('solicitacao')!.value : solicitacaoOption
+              "
+              *ngFor="let solicitacaoOption of solicitacaosCollection; trackBy: trackSolicitacaoById"
+            >
+              {{ solicitacaoOption.id }}
+            </option>
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

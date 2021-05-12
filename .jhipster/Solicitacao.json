@@ -1,0 +1,101 @@
+{
+  "name": "Solicitacao",
+  "fields": [
+    {
+      "fieldName": "origem",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "destino",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "dataSolicitacao",
+      "fieldType": "ZonedDateTime"
+    },
+    {
+      "fieldName": "horarioSaida",
+      "fieldType": "ZonedDateTime"
+    },
+    {
+      "fieldName": "horarioRetorno",
+      "fieldType": "ZonedDateTime"
+    },
+    {
+      "fieldName": "distanciaEstimadaKm",
+      "fieldType": "Double"
+    },
+    {
+      "fieldName": "justificativa",
+      "fieldType": "byte[]",
+      "fieldTypeBlobContent": "text"
+    },
+    {
+      "fieldName": "status",
+      "fieldType": "Status",
+      "fieldValues": "PENDENTE,DEFERIDO,INDEFERIDO"
+    },
+    {
+      "fieldName": "nPessoas",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "peso",
+      "fieldType": "Double"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "categoriaVeiculo",
+      "otherEntityRelationshipName": "solicitacao",
+      "relationshipName": "categoria",
+      "otherEntityField": "nome"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "veiculo",
+      "otherEntityRelationshipName": "solicitacao",
+      "relationshipName": "veiculoAlocado",
+      "otherEntityField": "placa"
+    },
+    {
+      "relationshipType": "one-to-one",
+      "otherEntityName": "avaliacaoSolicitacao",
+      "otherEntityRelationshipName": "solicitacao",
+      "relationshipName": "avaliacao",
+      "ownerSide": false
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "usuario",
+      "otherEntityRelationshipName": "minhasSolicitacoes",
+      "relationshipName": "solicitante",
+      "otherEntityField": "nome"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "usuario",
+      "otherEntityRelationshipName": "comoAutorizador",
+      "relationshipName": "autorizador",
+      "otherEntityField": "nome"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "usuario",
+      "otherEntityRelationshipName": "comoMotorista",
+      "relationshipName": "motorista",
+      "otherEntityField": "nome"
+    }
+  ],
+  "entityTableName": "solicitacao",
+  "dto": "mapstruct",
+  "pagination": "pagination",
+  "service": "serviceImpl",
+  "jpaMetamodelFiltering": true,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "applications": "*",
+  "changelogDate": "20210512125153"
+}

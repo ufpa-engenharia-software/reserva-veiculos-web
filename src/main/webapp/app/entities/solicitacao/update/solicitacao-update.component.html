@@ -1,0 +1,232 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2
+        id="jhi-solicitacao-heading"
+        data-cy="SolicitacaoCreateUpdateHeading"
+        jhiTranslate="reservaVeiculosApp.solicitacao.home.createOrEditLabel"
+      >
+        Create or edit a Solicitacao
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="form-group" [hidden]="editForm.get('id')!.value == null">
+          <label class="form-control-label" jhiTranslate="global.field.id" for="field_id">ID</label>
+          <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="reservaVeiculosApp.solicitacao.origem" for="field_origem">Origem</label>
+          <input type="text" class="form-control" name="origem" id="field_origem" data-cy="origem" formControlName="origem" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="reservaVeiculosApp.solicitacao.destino" for="field_destino">Destino</label>
+          <input type="text" class="form-control" name="destino" id="field_destino" data-cy="destino" formControlName="destino" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="reservaVeiculosApp.solicitacao.dataSolicitacao" for="field_dataSolicitacao"
+            >Data Solicitacao</label
+          >
+          <div class="d-flex">
+            <input
+              id="field_dataSolicitacao"
+              data-cy="dataSolicitacao"
+              type="datetime-local"
+              class="form-control"
+              name="dataSolicitacao"
+              formControlName="dataSolicitacao"
+              placeholder="YYYY-MM-DD HH:mm"
+            />
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="reservaVeiculosApp.solicitacao.horarioSaida" for="field_horarioSaida"
+            >Horario Saida</label
+          >
+          <div class="d-flex">
+            <input
+              id="field_horarioSaida"
+              data-cy="horarioSaida"
+              type="datetime-local"
+              class="form-control"
+              name="horarioSaida"
+              formControlName="horarioSaida"
+              placeholder="YYYY-MM-DD HH:mm"
+            />
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="reservaVeiculosApp.solicitacao.horarioRetorno" for="field_horarioRetorno"
+            >Horario Retorno</label
+          >
+          <div class="d-flex">
+            <input
+              id="field_horarioRetorno"
+              data-cy="horarioRetorno"
+              type="datetime-local"
+              class="form-control"
+              name="horarioRetorno"
+              formControlName="horarioRetorno"
+              placeholder="YYYY-MM-DD HH:mm"
+            />
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label
+            class="form-control-label"
+            jhiTranslate="reservaVeiculosApp.solicitacao.distanciaEstimadaKm"
+            for="field_distanciaEstimadaKm"
+            >Distancia Estimada Km</label
+          >
+          <input
+            type="number"
+            class="form-control"
+            name="distanciaEstimadaKm"
+            id="field_distanciaEstimadaKm"
+            data-cy="distanciaEstimadaKm"
+            formControlName="distanciaEstimadaKm"
+          />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="reservaVeiculosApp.solicitacao.justificativa" for="field_justificativa"
+            >Justificativa</label
+          >
+          <textarea
+            class="form-control"
+            name="justificativa"
+            id="field_justificativa"
+            data-cy="justificativa"
+            formControlName="justificativa"
+          ></textarea>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="reservaVeiculosApp.solicitacao.status" for="field_status">Status</label>
+          <select class="form-control" name="status" formControlName="status" id="field_status" data-cy="status">
+            <option [ngValue]="null">{{ 'reservaVeiculosApp.Status.null' | translate }}</option>
+            <option value="PENDENTE">{{ 'reservaVeiculosApp.Status.PENDENTE' | translate }}</option>
+            <option value="DEFERIDO">{{ 'reservaVeiculosApp.Status.DEFERIDO' | translate }}</option>
+            <option value="INDEFERIDO">{{ 'reservaVeiculosApp.Status.INDEFERIDO' | translate }}</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="reservaVeiculosApp.solicitacao.nPessoas" for="field_nPessoas">N Pessoas</label>
+          <input type="number" class="form-control" name="nPessoas" id="field_nPessoas" data-cy="nPessoas" formControlName="nPessoas" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="reservaVeiculosApp.solicitacao.peso" for="field_peso">Peso</label>
+          <input type="number" class="form-control" name="peso" id="field_peso" data-cy="peso" formControlName="peso" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="reservaVeiculosApp.solicitacao.categoria" for="field_categoria">Categoria</label>
+          <select class="form-control" id="field_categoria" data-cy="categoria" name="categoria" formControlName="categoria">
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="
+                categoriaVeiculoOption.id === editForm.get('categoria')!.value?.id
+                  ? editForm.get('categoria')!.value
+                  : categoriaVeiculoOption
+              "
+              *ngFor="let categoriaVeiculoOption of categoriaVeiculosSharedCollection; trackBy: trackCategoriaVeiculoById"
+            >
+              {{ categoriaVeiculoOption.nome }}
+            </option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="reservaVeiculosApp.solicitacao.veiculoAlocado" for="field_veiculoAlocado"
+            >Veiculo Alocado</label
+          >
+          <select
+            class="form-control"
+            id="field_veiculoAlocado"
+            data-cy="veiculoAlocado"
+            name="veiculoAlocado"
+            formControlName="veiculoAlocado"
+          >
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="
+                veiculoOption.id === editForm.get('veiculoAlocado')!.value?.id ? editForm.get('veiculoAlocado')!.value : veiculoOption
+              "
+              *ngFor="let veiculoOption of veiculosSharedCollection; trackBy: trackVeiculoById"
+            >
+              {{ veiculoOption.placa }}
+            </option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="reservaVeiculosApp.solicitacao.solicitante" for="field_solicitante"
+            >Solicitante</label
+          >
+          <select class="form-control" id="field_solicitante" data-cy="solicitante" name="solicitante" formControlName="solicitante">
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="usuarioOption.id === editForm.get('solicitante')!.value?.id ? editForm.get('solicitante')!.value : usuarioOption"
+              *ngFor="let usuarioOption of usuariosSharedCollection; trackBy: trackUsuarioById"
+            >
+              {{ usuarioOption.nome }}
+            </option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="reservaVeiculosApp.solicitacao.autorizador" for="field_autorizador"
+            >Autorizador</label
+          >
+          <select class="form-control" id="field_autorizador" data-cy="autorizador" name="autorizador" formControlName="autorizador">
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="usuarioOption.id === editForm.get('autorizador')!.value?.id ? editForm.get('autorizador')!.value : usuarioOption"
+              *ngFor="let usuarioOption of usuariosSharedCollection; trackBy: trackUsuarioById"
+            >
+              {{ usuarioOption.nome }}
+            </option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="reservaVeiculosApp.solicitacao.motorista" for="field_motorista">Motorista</label>
+          <select class="form-control" id="field_motorista" data-cy="motorista" name="motorista" formControlName="motorista">
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="usuarioOption.id === editForm.get('motorista')!.value?.id ? editForm.get('motorista')!.value : usuarioOption"
+              *ngFor="let usuarioOption of usuariosSharedCollection; trackBy: trackUsuarioById"
+            >
+              {{ usuarioOption.nome }}
+            </option>
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

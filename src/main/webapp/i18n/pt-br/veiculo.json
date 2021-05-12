@@ -1,0 +1,31 @@
+{
+  "reservaVeiculosApp": {
+    "veiculo": {
+      "home": {
+        "title": "Veiculos",
+        "refreshListLabel": "Atualizar lista",
+        "createLabel": "Criar novo Veiculo",
+        "createOrEditLabel": "Criar ou editar Veiculo",
+        "notFound": "Nenhum Veiculo encontrado"
+      },
+      "created": "Um novo Veiculo foi criado com o identificador {{ param }}",
+      "updated": "Um Veiculo foi atualizado com o identificador {{ param }}",
+      "deleted": "Um Veiculo foi excluído com o identificador {{ param }}",
+      "delete": {
+        "question": "Tem certeza de que deseja excluir Veiculo {{ id }}?"
+      },
+      "detail": {
+        "title": "Veiculo"
+      },
+      "id": "ID",
+      "placa": "Placa",
+      "modelo": "Modelo",
+      "ano": "Ano",
+      "disponivel": "Disponivel",
+      "criado": "Criado",
+      "fabricante": "Fabricante",
+      "categoria": "Categoria",
+      "motoristasHabilitados": "Motoristas Habilitados"
+    }
+  }
+}

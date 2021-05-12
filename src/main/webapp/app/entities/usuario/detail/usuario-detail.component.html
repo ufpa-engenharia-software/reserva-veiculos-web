@@ -1,0 +1,72 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <div *ngIf="usuario">
+      <h2 data-cy="usuarioDetailsHeading"><span jhiTranslate="reservaVeiculosApp.usuario.detail.title">Usuario</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ usuario.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="reservaVeiculosApp.usuario.nome">Nome</span></dt>
+        <dd>
+          <span>{{ usuario.nome }}</span>
+        </dd>
+        <dt><span jhiTranslate="reservaVeiculosApp.usuario.perfil">Perfil</span></dt>
+        <dd>
+          <span jhiTranslate="{{ 'reservaVeiculosApp.PerfilUsuario.' + usuario.perfil }}">{{ usuario.perfil }}</span>
+        </dd>
+        <dt><span jhiTranslate="reservaVeiculosApp.usuario.identificacao">Identificacao</span></dt>
+        <dd>
+          <span jhiTranslate="{{ 'reservaVeiculosApp.Identificador.' + usuario.identificacao }}">{{ usuario.identificacao }}</span>
+        </dd>
+        <dt><span jhiTranslate="reservaVeiculosApp.usuario.nidentificao">Nidentificao</span></dt>
+        <dd>
+          <span>{{ usuario.nidentificao }}</span>
+        </dd>
+        <dt><span jhiTranslate="reservaVeiculosApp.usuario.cpf">Cpf</span></dt>
+        <dd>
+          <span>{{ usuario.cpf }}</span>
+        </dd>
+        <dt><span jhiTranslate="reservaVeiculosApp.usuario.email">Email</span></dt>
+        <dd>
+          <span>{{ usuario.email }}</span>
+        </dd>
+        <dt><span jhiTranslate="reservaVeiculosApp.usuario.celular">Celular</span></dt>
+        <dd>
+          <span>{{ usuario.celular }}</span>
+        </dd>
+        <dt><span jhiTranslate="reservaVeiculosApp.usuario.whatsapp">Whatsapp</span></dt>
+        <dd>
+          <span>{{ usuario.whatsapp }}</span>
+        </dd>
+        <dt><span jhiTranslate="reservaVeiculosApp.usuario.ativo">Ativo</span></dt>
+        <dd>
+          <span>{{ usuario.ativo }}</span>
+        </dd>
+        <dt><span jhiTranslate="reservaVeiculosApp.usuario.criado">Criado</span></dt>
+        <dd>
+          <span>{{ usuario.criado | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span jhiTranslate="reservaVeiculosApp.usuario.nivelCNH">Nivel CNH</span></dt>
+        <dd>
+          <span jhiTranslate="{{ 'reservaVeiculosApp.NivelCNH.' + usuario.nivelCNH }}">{{ usuario.nivelCNH }}</span>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/usuario', usuario.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

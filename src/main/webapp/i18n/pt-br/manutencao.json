@@ -1,0 +1,27 @@
+{
+  "reservaVeiculosApp": {
+    "manutencao": {
+      "home": {
+        "title": "Manutencaos",
+        "refreshListLabel": "Atualizar lista",
+        "createLabel": "Criar novo Manutencao",
+        "createOrEditLabel": "Criar ou editar Manutencao",
+        "notFound": "Nenhum Manutencao encontrado"
+      },
+      "created": "Um novo Manutencao foi criado com o identificador {{ param }}",
+      "updated": "Um Manutencao foi atualizado com o identificador {{ param }}",
+      "deleted": "Um Manutencao foi excluído com o identificador {{ param }}",
+      "delete": {
+        "question": "Tem certeza de que deseja excluir Manutencao {{ id }}?"
+      },
+      "detail": {
+        "title": "Manutencao"
+      },
+      "id": "ID",
+      "km": "Km",
+      "descricao": "Descricao",
+      "custo": "Custo",
+      "veiculo": "Veiculo"
+    }
+  }
+}

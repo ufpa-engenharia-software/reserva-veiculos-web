@@ -7,6 +7,13 @@
       "jhipster-needle-menu-add-element": "JHipster will add additional menu entries here (do not translate!)",
       "entities": {
         "main": "Entidades",
+        "usuario": "Usuario",
+        "fabricante": "Fabricante",
+        "veiculo": "Veiculo",
+        "manutencao": "Manutencao",
+        "categoriaVeiculo": "Categoria Veiculo",
+        "solicitacao": "Solicitacao",
+        "avaliacaoSolicitacao": "Avaliacao Solicitacao",
         "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
       },
       "account": {

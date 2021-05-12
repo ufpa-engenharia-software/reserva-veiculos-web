@@ -42,7 +42,9 @@
     "jwtSecretKey": "MjZiZmMzMGFlNTI0ODU0ZWUzNmM0ZDlmYjBlODk5MTQxYjU3NjY0NTcwZTljZmVhNDhlODJhODNhNjNhMDY0YjY1OTI3OTYyMzQ0MGFkYTZkNjViYjE5OWFkZjE3NjkzYmU2M2M2OWM3OTg2NjIxZjgyYzlhZjg4MjliZTg3ZGM=",
     "clientTheme": "none",
     "clientThemeVariant": "",
-    "reactive": false
+    "reactive": false,
+    "entities": ["Usuario", "Fabricante", "Veiculo", "Manutencao", "CategoriaVeiculo", "Solicitacao", "AvaliacaoSolicitacao"],
+    "lastLiquibaseTimestamp": 1620823914000
   },
   "git-provider": "GitHub",
   "git-company": "ufpa-engenharia-software",

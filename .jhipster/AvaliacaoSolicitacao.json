@@ -1,0 +1,42 @@
+{
+  "name": "AvaliacaoSolicitacao",
+  "fields": [
+    {
+      "fieldName": "valorGasolina",
+      "fieldType": "Double"
+    },
+    {
+      "fieldName": "totalGasto",
+      "fieldType": "Double"
+    },
+    {
+      "fieldName": "statusSolicitacao",
+      "fieldType": "Status",
+      "fieldValues": "PENDENTE,DEFERIDO,INDEFERIDO"
+    },
+    {
+      "fieldName": "justificativaStatus",
+      "fieldType": "byte[]",
+      "fieldTypeBlobContent": "text"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "one-to-one",
+      "otherEntityName": "solicitacao",
+      "otherEntityRelationshipName": "avaliacao",
+      "relationshipName": "solicitacao",
+      "ownerSide": true
+    }
+  ],
+  "entityTableName": "avaliacao_solicitacao",
+  "dto": "mapstruct",
+  "pagination": "pagination",
+  "service": "serviceImpl",
+  "jpaMetamodelFiltering": true,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "applications": "*",
+  "changelogDate": "20210512125154"
+}

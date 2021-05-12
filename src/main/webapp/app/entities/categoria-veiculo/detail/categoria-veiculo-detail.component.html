@@ -1,0 +1,58 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <div *ngIf="categoriaVeiculo">
+      <h2 data-cy="categoriaVeiculoDetailsHeading">
+        <span jhiTranslate="reservaVeiculosApp.categoriaVeiculo.detail.title">Categoria Veiculo</span>
+      </h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ categoriaVeiculo.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="reservaVeiculosApp.categoriaVeiculo.nome">Nome</span></dt>
+        <dd>
+          <span>{{ categoriaVeiculo.nome }}</span>
+        </dd>
+        <dt><span jhiTranslate="reservaVeiculosApp.categoriaVeiculo.capacidadePessoas">Capacidade Pessoas</span></dt>
+        <dd>
+          <span>{{ categoriaVeiculo.capacidadePessoas }}</span>
+        </dd>
+        <dt><span jhiTranslate="reservaVeiculosApp.categoriaVeiculo.capacidadePeso">Capacidade Peso</span></dt>
+        <dd>
+          <span>{{ categoriaVeiculo.capacidadePeso }}</span>
+        </dd>
+        <dt><span jhiTranslate="reservaVeiculosApp.categoriaVeiculo.capacidadeArea">Capacidade Area</span></dt>
+        <dd>
+          <span>{{ categoriaVeiculo.capacidadeArea }}</span>
+        </dd>
+        <dt><span jhiTranslate="reservaVeiculosApp.categoriaVeiculo.eixos">Eixos</span></dt>
+        <dd>
+          <span>{{ categoriaVeiculo.eixos }}</span>
+        </dd>
+        <dt><span jhiTranslate="reservaVeiculosApp.categoriaVeiculo.altura">Altura</span></dt>
+        <dd>
+          <span>{{ categoriaVeiculo.altura }}</span>
+        </dd>
+        <dt><span jhiTranslate="reservaVeiculosApp.categoriaVeiculo.nivelCNH">Nivel CNH</span></dt>
+        <dd>
+          <span jhiTranslate="{{ 'reservaVeiculosApp.NivelCNH.' + categoriaVeiculo.nivelCNH }}">{{ categoriaVeiculo.nivelCNH }}</span>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/categoria-veiculo', categoriaVeiculo.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

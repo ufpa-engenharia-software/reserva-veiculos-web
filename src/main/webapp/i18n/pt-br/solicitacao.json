@@ -1,0 +1,39 @@
+{
+  "reservaVeiculosApp": {
+    "solicitacao": {
+      "home": {
+        "title": "Solicitacaos",
+        "refreshListLabel": "Atualizar lista",
+        "createLabel": "Criar novo Solicitacao",
+        "createOrEditLabel": "Criar ou editar Solicitacao",
+        "notFound": "Nenhum Solicitacao encontrado"
+      },
+      "created": "Um novo Solicitacao foi criado com o identificador {{ param }}",
+      "updated": "Um Solicitacao foi atualizado com o identificador {{ param }}",
+      "deleted": "Um Solicitacao foi excluído com o identificador {{ param }}",
+      "delete": {
+        "question": "Tem certeza de que deseja excluir Solicitacao {{ id }}?"
+      },
+      "detail": {
+        "title": "Solicitacao"
+      },
+      "id": "ID",
+      "origem": "Origem",
+      "destino": "Destino",
+      "dataSolicitacao": "Data Solicitacao",
+      "horarioSaida": "Horario Saida",
+      "horarioRetorno": "Horario Retorno",
+      "distanciaEstimadaKm": "Distancia Estimada Km",
+      "justificativa": "Justificativa",
+      "status": "Status",
+      "nPessoas": "N Pessoas",
+      "peso": "Peso",
+      "categoria": "Categoria",
+      "veiculoAlocado": "Veiculo Alocado",
+      "avaliacao": "Avaliacao",
+      "solicitante": "Solicitante",
+      "autorizador": "Autorizador",
+      "motorista": "Motorista"
+    }
+  }
+}

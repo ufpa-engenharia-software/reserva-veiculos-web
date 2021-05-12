@@ -1,0 +1,10 @@
+{
+  "reservaVeiculosApp": {
+    "Status": {
+      "null": "",
+      "PENDENTE": "PENDENTE",
+      "DEFERIDO": "DEFERIDO",
+      "INDEFERIDO": "INDEFERIDO"
+    }
+  }
+}

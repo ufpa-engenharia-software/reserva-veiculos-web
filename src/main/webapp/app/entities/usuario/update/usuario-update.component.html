@@ -1,0 +1,140 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2 id="jhi-usuario-heading" data-cy="UsuarioCreateUpdateHeading" jhiTranslate="reservaVeiculosApp.usuario.home.createOrEditLabel">
+        Create or edit a Usuario
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="form-group" [hidden]="editForm.get('id')!.value == null">
+          <label class="form-control-label" jhiTranslate="global.field.id" for="field_id">ID</label>
+          <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="reservaVeiculosApp.usuario.nome" for="field_nome">Nome</label>
+          <input type="text" class="form-control" name="nome" id="field_nome" data-cy="nome" formControlName="nome" />
+          <div *ngIf="editForm.get('nome')!.invalid && (editForm.get('nome')!.dirty || editForm.get('nome')!.touched)">
+            <small class="form-text text-danger" *ngIf="editForm.get('nome')?.errors?.required" jhiTranslate="entity.validation.required">
+              This field is required.
+            </small>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="reservaVeiculosApp.usuario.perfil" for="field_perfil">Perfil</label>
+          <select class="form-control" name="perfil" formControlName="perfil" id="field_perfil" data-cy="perfil">
+            <option [ngValue]="null">{{ 'reservaVeiculosApp.PerfilUsuario.null' | translate }}</option>
+            <option value="MOTORISTA">{{ 'reservaVeiculosApp.PerfilUsuario.MOTORISTA' | translate }}</option>
+            <option value="SETOR_TRANSPORTE">{{ 'reservaVeiculosApp.PerfilUsuario.SETOR_TRANSPORTE' | translate }}</option>
+            <option value="ADMINISTRACAO">{{ 'reservaVeiculosApp.PerfilUsuario.ADMINISTRACAO' | translate }}</option>
+            <option value="ALUNO">{{ 'reservaVeiculosApp.PerfilUsuario.ALUNO' | translate }}</option>
+            <option value="PROFESSOR">{{ 'reservaVeiculosApp.PerfilUsuario.PROFESSOR' | translate }}</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="reservaVeiculosApp.usuario.identificacao" for="field_identificacao"
+            >Identificacao</label
+          >
+          <select
+            class="form-control"
+            name="identificacao"
+            formControlName="identificacao"
+            id="field_identificacao"
+            data-cy="identificacao"
+          >
+            <option [ngValue]="null">{{ 'reservaVeiculosApp.Identificador.null' | translate }}</option>
+            <option value="SIAPE">{{ 'reservaVeiculosApp.Identificador.SIAPE' | translate }}</option>
+            <option value="MATRICULA_SIGAA">{{ 'reservaVeiculosApp.Identificador.MATRICULA_SIGAA' | translate }}</option>
+            <option value="CNH">{{ 'reservaVeiculosApp.Identificador.CNH' | translate }}</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="reservaVeiculosApp.usuario.nidentificao" for="field_nidentificao"
+            >Nidentificao</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="nidentificao"
+            id="field_nidentificao"
+            data-cy="nidentificao"
+            formControlName="nidentificao"
+          />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="reservaVeiculosApp.usuario.cpf" for="field_cpf">Cpf</label>
+          <input type="text" class="form-control" name="cpf" id="field_cpf" data-cy="cpf" formControlName="cpf" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="reservaVeiculosApp.usuario.email" for="field_email">Email</label>
+          <input type="text" class="form-control" name="email" id="field_email" data-cy="email" formControlName="email" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="reservaVeiculosApp.usuario.celular" for="field_celular">Celular</label>
+          <input type="text" class="form-control" name="celular" id="field_celular" data-cy="celular" formControlName="celular" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="reservaVeiculosApp.usuario.whatsapp" for="field_whatsapp">Whatsapp</label>
+          <input type="checkbox" class="form-check" name="whatsapp" id="field_whatsapp" data-cy="whatsapp" formControlName="whatsapp" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="reservaVeiculosApp.usuario.ativo" for="field_ativo">Ativo</label>
+          <input type="checkbox" class="form-check" name="ativo" id="field_ativo" data-cy="ativo" formControlName="ativo" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="reservaVeiculosApp.usuario.criado" for="field_criado">Criado</label>
+          <div class="d-flex">
+            <input
+              id="field_criado"
+              data-cy="criado"
+              type="datetime-local"
+              class="form-control"
+              name="criado"
+              formControlName="criado"
+              placeholder="YYYY-MM-DD HH:mm"
+            />
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="reservaVeiculosApp.usuario.nivelCNH" for="field_nivelCNH">Nivel CNH</label>
+          <select class="form-control" name="nivelCNH" formControlName="nivelCNH" id="field_nivelCNH" data-cy="nivelCNH">
+            <option [ngValue]="null">{{ 'reservaVeiculosApp.NivelCNH.null' | translate }}</option>
+            <option value="A">{{ 'reservaVeiculosApp.NivelCNH.A' | translate }}</option>
+            <option value="B">{{ 'reservaVeiculosApp.NivelCNH.B' | translate }}</option>
+            <option value="C">{{ 'reservaVeiculosApp.NivelCNH.C' | translate }}</option>
+            <option value="D">{{ 'reservaVeiculosApp.NivelCNH.D' | translate }}</option>
+            <option value="E">{{ 'reservaVeiculosApp.NivelCNH.E' | translate }}</option>
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
