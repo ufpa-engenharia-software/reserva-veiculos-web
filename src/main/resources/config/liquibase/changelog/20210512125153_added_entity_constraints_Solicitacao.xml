@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.3.xsd">
+    <!--
+        Added the constraints for entity Solicitacao.
+    -->
+    <changeSet id="20210512125153-2" author="jhipster">
+
+        <addForeignKeyConstraint baseColumnNames="categoria_id"
+                                 baseTableName="solicitacao"
+                                 constraintName="fk_solicitacao__categoria_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="categoria_veiculo"/>
+
+        <addForeignKeyConstraint baseColumnNames="veiculo_alocado_id"
+                                 baseTableName="solicitacao"
+                                 constraintName="fk_solicitacao__veiculo_alocado_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="veiculo"/>
+
+        <addForeignKeyConstraint baseColumnNames="solicitante_id"
+                                 baseTableName="solicitacao"
+                                 constraintName="fk_solicitacao__solicitante_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="usuario"/>
+
+        <addForeignKeyConstraint baseColumnNames="autorizador_id"
+                                 baseTableName="solicitacao"
+                                 constraintName="fk_solicitacao__autorizador_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="usuario"/>
+
+        <addForeignKeyConstraint baseColumnNames="motorista_id"
+                                 baseTableName="solicitacao"
+                                 constraintName="fk_solicitacao__motorista_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="usuario"/>
+    </changeSet>
+</databaseChangeLog>

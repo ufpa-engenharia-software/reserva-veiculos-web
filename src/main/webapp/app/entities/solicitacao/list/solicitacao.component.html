@@ -1,0 +1,175 @@
+<div>
+  <h2 id="page-heading" data-cy="SolicitacaoHeading">
+    <span jhiTranslate="reservaVeiculosApp.solicitacao.home.title">Solicitacaos</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info mr-2" (click)="loadPage()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span jhiTranslate="reservaVeiculosApp.solicitacao.home.refreshListLabel">Refresh List</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-solicitacao"
+        [routerLink]="['/solicitacao/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span jhiTranslate="reservaVeiculosApp.solicitacao.home.createLabel"> Create a new Solicitacao </span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  <div class="alert alert-warning" id="no-result" *ngIf="solicitacaos?.length === 0">
+    <span jhiTranslate="reservaVeiculosApp.solicitacao.home.notFound">No solicitacaos found</span>
+  </div>
+
+  <div class="table-responsive" id="entities" *ngIf="solicitacaos && solicitacaos.length > 0">
+    <table class="table table-striped" aria-describedby="page-heading">
+      <thead>
+        <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" [callback]="loadPage.bind(this)">
+          <th scope="col" jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon icon="sort"></fa-icon></th>
+          <th scope="col" jhiSortBy="origem">
+            <span jhiTranslate="reservaVeiculosApp.solicitacao.origem">Origem</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="destino">
+            <span jhiTranslate="reservaVeiculosApp.solicitacao.destino">Destino</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="dataSolicitacao">
+            <span jhiTranslate="reservaVeiculosApp.solicitacao.dataSolicitacao">Data Solicitacao</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="horarioSaida">
+            <span jhiTranslate="reservaVeiculosApp.solicitacao.horarioSaida">Horario Saida</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="horarioRetorno">
+            <span jhiTranslate="reservaVeiculosApp.solicitacao.horarioRetorno">Horario Retorno</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="distanciaEstimadaKm">
+            <span jhiTranslate="reservaVeiculosApp.solicitacao.distanciaEstimadaKm">Distancia Estimada Km</span>
+            <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="justificativa">
+            <span jhiTranslate="reservaVeiculosApp.solicitacao.justificativa">Justificativa</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="status">
+            <span jhiTranslate="reservaVeiculosApp.solicitacao.status">Status</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="nPessoas">
+            <span jhiTranslate="reservaVeiculosApp.solicitacao.nPessoas">N Pessoas</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="peso">
+            <span jhiTranslate="reservaVeiculosApp.solicitacao.peso">Peso</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="categoria.nome">
+            <span jhiTranslate="reservaVeiculosApp.solicitacao.categoria">Categoria</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="veiculoAlocado.placa">
+            <span jhiTranslate="reservaVeiculosApp.solicitacao.veiculoAlocado">Veiculo Alocado</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="solicitante.nome">
+            <span jhiTranslate="reservaVeiculosApp.solicitacao.solicitante">Solicitante</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="autorizador.nome">
+            <span jhiTranslate="reservaVeiculosApp.solicitacao.autorizador">Autorizador</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="motorista.nome">
+            <span jhiTranslate="reservaVeiculosApp.solicitacao.motorista">Motorista</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let solicitacao of solicitacaos; trackBy: trackId" data-cy="entityTable">
+          <td>
+            <a [routerLink]="['/solicitacao', solicitacao.id, 'view']">{{ solicitacao.id }}</a>
+          </td>
+          <td>{{ solicitacao.origem }}</td>
+          <td>{{ solicitacao.destino }}</td>
+          <td>{{ solicitacao.dataSolicitacao | formatMediumDatetime }}</td>
+          <td>{{ solicitacao.horarioSaida | formatMediumDatetime }}</td>
+          <td>{{ solicitacao.horarioRetorno | formatMediumDatetime }}</td>
+          <td>{{ solicitacao.distanciaEstimadaKm }}</td>
+          <td>{{ solicitacao.justificativa }}</td>
+          <td jhiTranslate="{{ 'reservaVeiculosApp.Status.' + solicitacao.status }}">{{ solicitacao.status }}</td>
+          <td>{{ solicitacao.nPessoas }}</td>
+          <td>{{ solicitacao.peso }}</td>
+          <td>
+            <div *ngIf="solicitacao.categoria">
+              <a [routerLink]="['/categoria-veiculo', solicitacao.categoria?.id, 'view']">{{ solicitacao.categoria?.nome }}</a>
+            </div>
+          </td>
+          <td>
+            <div *ngIf="solicitacao.veiculoAlocado">
+              <a [routerLink]="['/veiculo', solicitacao.veiculoAlocado?.id, 'view']">{{ solicitacao.veiculoAlocado?.placa }}</a>
+            </div>
+          </td>
+          <td>
+            <div *ngIf="solicitacao.solicitante">
+              <a [routerLink]="['/usuario', solicitacao.solicitante?.id, 'view']">{{ solicitacao.solicitante?.nome }}</a>
+            </div>
+          </td>
+          <td>
+            <div *ngIf="solicitacao.autorizador">
+              <a [routerLink]="['/usuario', solicitacao.autorizador?.id, 'view']">{{ solicitacao.autorizador?.nome }}</a>
+            </div>
+          </td>
+          <td>
+            <div *ngIf="solicitacao.motorista">
+              <a [routerLink]="['/usuario', solicitacao.motorista?.id, 'view']">{{ solicitacao.motorista?.nome }}</a>
+            </div>
+          </td>
+          <td class="text-right">
+            <div class="btn-group">
+              <button
+                type="submit"
+                [routerLink]="['/solicitacao', solicitacao.id, 'view']"
+                class="btn btn-info btn-sm"
+                data-cy="entityDetailsButton"
+              >
+                <fa-icon icon="eye"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+              </button>
+
+              <button
+                type="submit"
+                [routerLink]="['/solicitacao', solicitacao.id, 'edit']"
+                class="btn btn-primary btn-sm"
+                data-cy="entityEditButton"
+              >
+                <fa-icon icon="pencil-alt"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+              </button>
+
+              <button type="submit" (click)="delete(solicitacao)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                <fa-icon icon="times"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div *ngIf="solicitacaos && solicitacaos.length > 0">
+    <div class="row justify-content-center">
+      <jhi-item-count [params]="{ page: page, totalItems: totalItems, itemsPerPage: itemsPerPage }"></jhi-item-count>
+    </div>
+
+    <div class="row justify-content-center">
+      <ngb-pagination
+        [collectionSize]="totalItems"
+        [(page)]="ngbPaginationPage"
+        [pageSize]="itemsPerPage"
+        [maxSize]="5"
+        [rotate]="true"
+        [boundaryLinks]="true"
+        (pageChange)="loadPage($event)"
+      ></ngb-pagination>
+    </div>
+  </div>
+</div>

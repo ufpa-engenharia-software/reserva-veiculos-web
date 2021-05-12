@@ -1,0 +1,67 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <div *ngIf="veiculo">
+      <h2 data-cy="veiculoDetailsHeading"><span jhiTranslate="reservaVeiculosApp.veiculo.detail.title">Veiculo</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ veiculo.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="reservaVeiculosApp.veiculo.placa">Placa</span></dt>
+        <dd>
+          <span>{{ veiculo.placa }}</span>
+        </dd>
+        <dt><span jhiTranslate="reservaVeiculosApp.veiculo.modelo">Modelo</span></dt>
+        <dd>
+          <span>{{ veiculo.modelo }}</span>
+        </dd>
+        <dt><span jhiTranslate="reservaVeiculosApp.veiculo.ano">Ano</span></dt>
+        <dd>
+          <span>{{ veiculo.ano }}</span>
+        </dd>
+        <dt><span jhiTranslate="reservaVeiculosApp.veiculo.disponivel">Disponivel</span></dt>
+        <dd>
+          <span>{{ veiculo.disponivel }}</span>
+        </dd>
+        <dt><span jhiTranslate="reservaVeiculosApp.veiculo.criado">Criado</span></dt>
+        <dd>
+          <span>{{ veiculo.criado | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span jhiTranslate="reservaVeiculosApp.veiculo.fabricante">Fabricante</span></dt>
+        <dd>
+          <div *ngIf="veiculo.fabricante">
+            <a [routerLink]="['/fabricante', veiculo.fabricante?.id, 'view']">{{ veiculo.fabricante?.nome }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="reservaVeiculosApp.veiculo.categoria">Categoria</span></dt>
+        <dd>
+          <div *ngIf="veiculo.categoria">
+            <a [routerLink]="['/categoria-veiculo', veiculo.categoria?.id, 'view']">{{ veiculo.categoria?.nome }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="reservaVeiculosApp.veiculo.motoristasHabilitados">Motoristas Habilitados</span></dt>
+        <dd>
+          <span *ngFor="let motoristasHabilitados of veiculo.motoristasHabilitados; let last = last">
+            <a [routerLink]="['/usuario', motoristasHabilitados?.id, 'view']">{{ motoristasHabilitados.nome }}</a
+            >{{ last ? '' : ', ' }}
+          </span>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/veiculo', veiculo.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

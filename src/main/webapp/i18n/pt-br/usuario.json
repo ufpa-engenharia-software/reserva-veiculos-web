@@ -1,0 +1,38 @@
+{
+  "reservaVeiculosApp": {
+    "usuario": {
+      "home": {
+        "title": "Usuarios",
+        "refreshListLabel": "Atualizar lista",
+        "createLabel": "Criar novo Usuario",
+        "createOrEditLabel": "Criar ou editar Usuario",
+        "notFound": "Nenhum Usuario encontrado"
+      },
+      "created": "Um novo Usuario foi criado com o identificador {{ param }}",
+      "updated": "Um Usuario foi atualizado com o identificador {{ param }}",
+      "deleted": "Um Usuario foi excluído com o identificador {{ param }}",
+      "delete": {
+        "question": "Tem certeza de que deseja excluir Usuario {{ id }}?"
+      },
+      "detail": {
+        "title": "Usuario"
+      },
+      "id": "ID",
+      "nome": "Nome",
+      "perfil": "Perfil",
+      "identificacao": "Identificacao",
+      "nidentificao": "Nidentificao",
+      "cpf": "Cpf",
+      "email": "Email",
+      "celular": "Celular",
+      "whatsapp": "Whatsapp",
+      "ativo": "Ativo",
+      "criado": "Criado",
+      "nivelCNH": "Nivel CNH",
+      "minhasSolicitacoes": "Minhas Solicitacoes",
+      "comoAutorizador": "Como Autorizador",
+      "comoMotorista": "Como Motorista",
+      "veiculosHabilitados": "Veiculos Habilitados"
+    }
+  }
+}

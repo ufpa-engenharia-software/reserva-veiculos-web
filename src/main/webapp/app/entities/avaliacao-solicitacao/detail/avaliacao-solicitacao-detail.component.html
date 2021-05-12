@@ -1,0 +1,54 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <div *ngIf="avaliacaoSolicitacao">
+      <h2 data-cy="avaliacaoSolicitacaoDetailsHeading">
+        <span jhiTranslate="reservaVeiculosApp.avaliacaoSolicitacao.detail.title">Avaliacao Solicitacao</span>
+      </h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ avaliacaoSolicitacao.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="reservaVeiculosApp.avaliacaoSolicitacao.valorGasolina">Valor Gasolina</span></dt>
+        <dd>
+          <span>{{ avaliacaoSolicitacao.valorGasolina }}</span>
+        </dd>
+        <dt><span jhiTranslate="reservaVeiculosApp.avaliacaoSolicitacao.totalGasto">Total Gasto</span></dt>
+        <dd>
+          <span>{{ avaliacaoSolicitacao.totalGasto }}</span>
+        </dd>
+        <dt><span jhiTranslate="reservaVeiculosApp.avaliacaoSolicitacao.statusSolicitacao">Status Solicitacao</span></dt>
+        <dd>
+          <span jhiTranslate="{{ 'reservaVeiculosApp.Status.' + avaliacaoSolicitacao.statusSolicitacao }}">{{
+            avaliacaoSolicitacao.statusSolicitacao
+          }}</span>
+        </dd>
+        <dt><span jhiTranslate="reservaVeiculosApp.avaliacaoSolicitacao.justificativaStatus">Justificativa Status</span></dt>
+        <dd>
+          <span>{{ avaliacaoSolicitacao.justificativaStatus }}</span>
+        </dd>
+        <dt><span jhiTranslate="reservaVeiculosApp.avaliacaoSolicitacao.solicitacao">Solicitacao</span></dt>
+        <dd>
+          <div *ngIf="avaliacaoSolicitacao.solicitacao">
+            <a [routerLink]="['/solicitacao', avaliacaoSolicitacao.solicitacao?.id, 'view']">{{ avaliacaoSolicitacao.solicitacao?.id }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/avaliacao-solicitacao', avaliacaoSolicitacao.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

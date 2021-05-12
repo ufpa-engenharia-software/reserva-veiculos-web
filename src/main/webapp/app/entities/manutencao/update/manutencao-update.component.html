@@ -1,0 +1,66 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2
+        id="jhi-manutencao-heading"
+        data-cy="ManutencaoCreateUpdateHeading"
+        jhiTranslate="reservaVeiculosApp.manutencao.home.createOrEditLabel"
+      >
+        Create or edit a Manutencao
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="form-group" [hidden]="editForm.get('id')!.value == null">
+          <label class="form-control-label" jhiTranslate="global.field.id" for="field_id">ID</label>
+          <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="reservaVeiculosApp.manutencao.km" for="field_km">Km</label>
+          <input type="number" class="form-control" name="km" id="field_km" data-cy="km" formControlName="km" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="reservaVeiculosApp.manutencao.descricao" for="field_descricao">Descricao</label>
+          <textarea class="form-control" name="descricao" id="field_descricao" data-cy="descricao" formControlName="descricao"></textarea>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="reservaVeiculosApp.manutencao.custo" for="field_custo">Custo</label>
+          <input type="number" class="form-control" name="custo" id="field_custo" data-cy="custo" formControlName="custo" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="reservaVeiculosApp.manutencao.veiculo" for="field_veiculo">Veiculo</label>
+          <select class="form-control" id="field_veiculo" data-cy="veiculo" name="veiculo" formControlName="veiculo">
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="veiculoOption.id === editForm.get('veiculo')!.value?.id ? editForm.get('veiculo')!.value : veiculoOption"
+              *ngFor="let veiculoOption of veiculosSharedCollection; trackBy: trackVeiculoById"
+            >
+              {{ veiculoOption.placa }}
+            </option>
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

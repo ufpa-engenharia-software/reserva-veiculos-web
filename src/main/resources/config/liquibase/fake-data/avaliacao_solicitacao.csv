@@ -1,0 +1,11 @@
+id;valor_gasolina;total_gasto;status_solicitacao;justificativa_status
+1;57192;63190;DEFERIDO;../fake-data/blob/hipster.txt
+2;82983;38168;DEFERIDO;../fake-data/blob/hipster.txt
+3;12959;52674;PENDENTE;../fake-data/blob/hipster.txt
+4;91831;81586;INDEFERIDO;../fake-data/blob/hipster.txt
+5;4129;16481;DEFERIDO;../fake-data/blob/hipster.txt
+6;37595;4996;DEFERIDO;../fake-data/blob/hipster.txt
+7;26855;67707;INDEFERIDO;../fake-data/blob/hipster.txt
+8;74981;8805;INDEFERIDO;../fake-data/blob/hipster.txt
+9;46998;35104;PENDENTE;../fake-data/blob/hipster.txt
+10;88616;47486;DEFERIDO;../fake-data/blob/hipster.txt

@@ -1,0 +1,11 @@
+id;origem;destino;data_solicitacao;horario_saida;horario_retorno;distancia_estimada_km;justificativa;status;n_pessoas;peso
+1;programming;Implementation bus copying;2021-05-12T11:21:11;2021-05-12T08:36:14;2021-05-11T22:07:19;75120;../fake-data/blob/hipster.txt;DEFERIDO;63795;47936
+2;withdrawal Beleza Genérico;à Paraná Operations;2021-05-11T15:37:18;2021-05-12T02:56:34;2021-05-11T19:20:13;70116;../fake-data/blob/hipster.txt;INDEFERIDO;43707;7715
+3;Investor Cadeira;didactic Crianças;2021-05-11T19:38:55;2021-05-12T10:35:13;2021-05-11T23:07:30;82;../fake-data/blob/hipster.txt;PENDENTE;27789;36769
+4;Optional Inteligente;firewall Chief Officer;2021-05-11T23:05:43;2021-05-11T17:50:10;2021-05-12T11:49:38;21974;../fake-data/blob/hipster.txt;DEFERIDO;22664;520
+5;capability Developer;celeste;2021-05-11T22:46:15;2021-05-11T14:33:05;2021-05-12T09:35:43;21777;../fake-data/blob/hipster.txt;DEFERIDO;66275;18098
+6;Savings PCI;Bacon Francesa Loan;2021-05-12T02:13:59;2021-05-11T22:11:04;2021-05-11T15:17:07;24189;../fake-data/blob/hipster.txt;PENDENTE;10469;94128
+7;Dynamic;local transmit hack;2021-05-11T16:58:27;2021-05-11T22:42:13;2021-05-12T06:29:01;73868;../fake-data/blob/hipster.txt;PENDENTE;5593;87289
+8;wireless;Future;2021-05-11T15:24:27;2021-05-11T19:20:16;2021-05-11T21:53:12;49782;../fake-data/blob/hipster.txt;DEFERIDO;84563;23358
+9;synthesize system bypass;cross-platform Calças;2021-05-11T20:28:04;2021-05-11T13:49:07;2021-05-11T16:50:36;22846;../fake-data/blob/hipster.txt;PENDENTE;34364;66758
+10;RSS alliance;Tactics multimedia;2021-05-12T01:02:16;2021-05-11T18:17:58;2021-05-12T00:27:52;22615;../fake-data/blob/hipster.txt;INDEFERIDO;93156;78638

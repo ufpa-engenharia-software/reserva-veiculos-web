@@ -1,0 +1,134 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2 id="jhi-veiculo-heading" data-cy="VeiculoCreateUpdateHeading" jhiTranslate="reservaVeiculosApp.veiculo.home.createOrEditLabel">
+        Create or edit a Veiculo
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="form-group" [hidden]="editForm.get('id')!.value == null">
+          <label class="form-control-label" jhiTranslate="global.field.id" for="field_id">ID</label>
+          <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="reservaVeiculosApp.veiculo.placa" for="field_placa">Placa</label>
+          <input type="text" class="form-control" name="placa" id="field_placa" data-cy="placa" formControlName="placa" />
+          <div *ngIf="editForm.get('placa')!.invalid && (editForm.get('placa')!.dirty || editForm.get('placa')!.touched)">
+            <small class="form-text text-danger" *ngIf="editForm.get('placa')?.errors?.required" jhiTranslate="entity.validation.required">
+              This field is required.
+            </small>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="reservaVeiculosApp.veiculo.modelo" for="field_modelo">Modelo</label>
+          <input type="text" class="form-control" name="modelo" id="field_modelo" data-cy="modelo" formControlName="modelo" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="reservaVeiculosApp.veiculo.ano" for="field_ano">Ano</label>
+          <input type="number" class="form-control" name="ano" id="field_ano" data-cy="ano" formControlName="ano" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="reservaVeiculosApp.veiculo.disponivel" for="field_disponivel">Disponivel</label>
+          <input
+            type="checkbox"
+            class="form-check"
+            name="disponivel"
+            id="field_disponivel"
+            data-cy="disponivel"
+            formControlName="disponivel"
+          />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="reservaVeiculosApp.veiculo.criado" for="field_criado">Criado</label>
+          <div class="d-flex">
+            <input
+              id="field_criado"
+              data-cy="criado"
+              type="datetime-local"
+              class="form-control"
+              name="criado"
+              formControlName="criado"
+              placeholder="YYYY-MM-DD HH:mm"
+            />
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="reservaVeiculosApp.veiculo.fabricante" for="field_fabricante">Fabricante</label>
+          <select class="form-control" id="field_fabricante" data-cy="fabricante" name="fabricante" formControlName="fabricante">
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="
+                fabricanteOption.id === editForm.get('fabricante')!.value?.id ? editForm.get('fabricante')!.value : fabricanteOption
+              "
+              *ngFor="let fabricanteOption of fabricantesSharedCollection; trackBy: trackFabricanteById"
+            >
+              {{ fabricanteOption.nome }}
+            </option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="reservaVeiculosApp.veiculo.categoria" for="field_categoria">Categoria</label>
+          <select class="form-control" id="field_categoria" data-cy="categoria" name="categoria" formControlName="categoria">
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="
+                categoriaVeiculoOption.id === editForm.get('categoria')!.value?.id
+                  ? editForm.get('categoria')!.value
+                  : categoriaVeiculoOption
+              "
+              *ngFor="let categoriaVeiculoOption of categoriaVeiculosSharedCollection; trackBy: trackCategoriaVeiculoById"
+            >
+              {{ categoriaVeiculoOption.nome }}
+            </option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label jhiTranslate="reservaVeiculosApp.veiculo.motoristasHabilitados" for="field_motoristasHabilitados"
+            >Motoristas Habilitados</label
+          >
+          <select
+            class="form-control"
+            id="field_motoristasHabilitados"
+            data-cy="motoristasHabilitados"
+            multiple
+            name="motoristasHabilitados"
+            formControlName="motoristasHabilitados"
+          >
+            <option
+              [ngValue]="getSelectedUsuario(usuarioOption, editForm.get('motoristasHabilitados')!.value)"
+              *ngFor="let usuarioOption of usuariosSharedCollection; trackBy: trackUsuarioById"
+            >
+              {{ usuarioOption.nome }}
+            </option>
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

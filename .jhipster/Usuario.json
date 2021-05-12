@@ -1,0 +1,91 @@
+{
+  "name": "Usuario",
+  "fields": [
+    {
+      "fieldName": "nome",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "perfil",
+      "fieldType": "PerfilUsuario",
+      "fieldValues": "MOTORISTA,SETOR_TRANSPORTE,ADMINISTRACAO,ALUNO,PROFESSOR"
+    },
+    {
+      "fieldName": "identificacao",
+      "fieldType": "Identificador",
+      "fieldValues": "SIAPE,MATRICULA_SIGAA,CNH"
+    },
+    {
+      "fieldName": "nidentificao",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "cpf",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "email",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "celular",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "whatsapp",
+      "fieldType": "Boolean"
+    },
+    {
+      "fieldName": "ativo",
+      "fieldType": "Boolean"
+    },
+    {
+      "fieldName": "criado",
+      "fieldType": "ZonedDateTime"
+    },
+    {
+      "fieldName": "nivelCNH",
+      "fieldType": "NivelCNH",
+      "fieldValues": "A,B,C,D,E"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "solicitacao",
+      "otherEntityRelationshipName": "solicitante",
+      "relationshipName": "minhasSolicitacoes"
+    },
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "solicitacao",
+      "otherEntityRelationshipName": "autorizador",
+      "relationshipName": "comoAutorizador"
+    },
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "solicitacao",
+      "otherEntityRelationshipName": "motorista",
+      "relationshipName": "comoMotorista"
+    },
+    {
+      "relationshipType": "many-to-many",
+      "otherEntityName": "veiculo",
+      "otherEntityRelationshipName": "motoristasHabilitados",
+      "relationshipName": "veiculosHabilitados",
+      "otherEntityField": "placa",
+      "ownerSide": false
+    }
+  ],
+  "entityTableName": "usuario",
+  "dto": "mapstruct",
+  "pagination": "pagination",
+  "service": "serviceImpl",
+  "jpaMetamodelFiltering": true,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "applications": "*",
+  "changelogDate": "20210512125148"
+}

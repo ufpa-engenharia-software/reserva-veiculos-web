@@ -1,0 +1,98 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <div *ngIf="solicitacao">
+      <h2 data-cy="solicitacaoDetailsHeading"><span jhiTranslate="reservaVeiculosApp.solicitacao.detail.title">Solicitacao</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ solicitacao.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="reservaVeiculosApp.solicitacao.origem">Origem</span></dt>
+        <dd>
+          <span>{{ solicitacao.origem }}</span>
+        </dd>
+        <dt><span jhiTranslate="reservaVeiculosApp.solicitacao.destino">Destino</span></dt>
+        <dd>
+          <span>{{ solicitacao.destino }}</span>
+        </dd>
+        <dt><span jhiTranslate="reservaVeiculosApp.solicitacao.dataSolicitacao">Data Solicitacao</span></dt>
+        <dd>
+          <span>{{ solicitacao.dataSolicitacao | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span jhiTranslate="reservaVeiculosApp.solicitacao.horarioSaida">Horario Saida</span></dt>
+        <dd>
+          <span>{{ solicitacao.horarioSaida | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span jhiTranslate="reservaVeiculosApp.solicitacao.horarioRetorno">Horario Retorno</span></dt>
+        <dd>
+          <span>{{ solicitacao.horarioRetorno | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span jhiTranslate="reservaVeiculosApp.solicitacao.distanciaEstimadaKm">Distancia Estimada Km</span></dt>
+        <dd>
+          <span>{{ solicitacao.distanciaEstimadaKm }}</span>
+        </dd>
+        <dt><span jhiTranslate="reservaVeiculosApp.solicitacao.justificativa">Justificativa</span></dt>
+        <dd>
+          <span>{{ solicitacao.justificativa }}</span>
+        </dd>
+        <dt><span jhiTranslate="reservaVeiculosApp.solicitacao.status">Status</span></dt>
+        <dd>
+          <span jhiTranslate="{{ 'reservaVeiculosApp.Status.' + solicitacao.status }}">{{ solicitacao.status }}</span>
+        </dd>
+        <dt><span jhiTranslate="reservaVeiculosApp.solicitacao.nPessoas">N Pessoas</span></dt>
+        <dd>
+          <span>{{ solicitacao.nPessoas }}</span>
+        </dd>
+        <dt><span jhiTranslate="reservaVeiculosApp.solicitacao.peso">Peso</span></dt>
+        <dd>
+          <span>{{ solicitacao.peso }}</span>
+        </dd>
+        <dt><span jhiTranslate="reservaVeiculosApp.solicitacao.categoria">Categoria</span></dt>
+        <dd>
+          <div *ngIf="solicitacao.categoria">
+            <a [routerLink]="['/categoria-veiculo', solicitacao.categoria?.id, 'view']">{{ solicitacao.categoria?.nome }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="reservaVeiculosApp.solicitacao.veiculoAlocado">Veiculo Alocado</span></dt>
+        <dd>
+          <div *ngIf="solicitacao.veiculoAlocado">
+            <a [routerLink]="['/veiculo', solicitacao.veiculoAlocado?.id, 'view']">{{ solicitacao.veiculoAlocado?.placa }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="reservaVeiculosApp.solicitacao.solicitante">Solicitante</span></dt>
+        <dd>
+          <div *ngIf="solicitacao.solicitante">
+            <a [routerLink]="['/usuario', solicitacao.solicitante?.id, 'view']">{{ solicitacao.solicitante?.nome }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="reservaVeiculosApp.solicitacao.autorizador">Autorizador</span></dt>
+        <dd>
+          <div *ngIf="solicitacao.autorizador">
+            <a [routerLink]="['/usuario', solicitacao.autorizador?.id, 'view']">{{ solicitacao.autorizador?.nome }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="reservaVeiculosApp.solicitacao.motorista">Motorista</span></dt>
+        <dd>
+          <div *ngIf="solicitacao.motorista">
+            <a [routerLink]="['/usuario', solicitacao.motorista?.id, 'view']">{{ solicitacao.motorista?.nome }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/solicitacao', solicitacao.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

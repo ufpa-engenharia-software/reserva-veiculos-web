@@ -1,0 +1,30 @@
+{
+  "reservaVeiculosApp": {
+    "categoriaVeiculo": {
+      "home": {
+        "title": "Categoria Veiculos",
+        "refreshListLabel": "Atualizar lista",
+        "createLabel": "Criar novo Categoria Veiculo",
+        "createOrEditLabel": "Criar ou editar Categoria Veiculo",
+        "notFound": "Nenhum Categoria Veiculo encontrado"
+      },
+      "created": "Um novo Categoria Veiculo foi criado com o identificador {{ param }}",
+      "updated": "Um Categoria Veiculo foi atualizado com o identificador {{ param }}",
+      "deleted": "Um Categoria Veiculo foi excluído com o identificador {{ param }}",
+      "delete": {
+        "question": "Tem certeza de que deseja excluir Categoria Veiculo {{ id }}?"
+      },
+      "detail": {
+        "title": "Categoria Veiculo"
+      },
+      "id": "ID",
+      "nome": "Nome",
+      "capacidadePessoas": "Capacidade Pessoas",
+      "capacidadePeso": "Capacidade Peso",
+      "capacidadeArea": "Capacidade Area",
+      "eixos": "Eixos",
+      "altura": "Altura",
+      "nivelCNH": "Nivel CNH"
+    }
+  }
+}

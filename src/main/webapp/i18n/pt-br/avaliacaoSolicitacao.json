@@ -1,0 +1,28 @@
+{
+  "reservaVeiculosApp": {
+    "avaliacaoSolicitacao": {
+      "home": {
+        "title": "Avaliacao Solicitacaos",
+        "refreshListLabel": "Atualizar lista",
+        "createLabel": "Criar novo Avaliacao Solicitacao",
+        "createOrEditLabel": "Criar ou editar Avaliacao Solicitacao",
+        "notFound": "Nenhum Avaliacao Solicitacao encontrado"
+      },
+      "created": "Um novo Avaliacao Solicitacao foi criado com o identificador {{ param }}",
+      "updated": "Um Avaliacao Solicitacao foi atualizado com o identificador {{ param }}",
+      "deleted": "Um Avaliacao Solicitacao foi excluído com o identificador {{ param }}",
+      "delete": {
+        "question": "Tem certeza de que deseja excluir Avaliacao Solicitacao {{ id }}?"
+      },
+      "detail": {
+        "title": "Avaliacao Solicitacao"
+      },
+      "id": "ID",
+      "valorGasolina": "Valor Gasolina",
+      "totalGasto": "Total Gasto",
+      "statusSolicitacao": "Status Solicitacao",
+      "justificativaStatus": "Justificativa Status",
+      "solicitacao": "Solicitacao"
+    }
+  }
+}
