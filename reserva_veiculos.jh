@@ -93,7 +93,8 @@ entity AvaliacaoSolicitacao {
 }
 
 relationship OneToOne {
-	AvaliacaoSolicitacao{solicitacao} to Solicitacao{avaliacao}
+	AvaliacaoSolicitacao{solicitacao} to Solicitacao{avaliacao}    
+    Usuario{user(login)} to User
 }
 relationship OneToMany
 {			

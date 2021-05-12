@@ -58,6 +58,10 @@
         <dd>
           <span jhiTranslate="{{ 'reservaVeiculosApp.NivelCNH.' + usuario.nivelCNH }}">{{ usuario.nivelCNH }}</span>
         </dd>
+        <dt><span jhiTranslate="reservaVeiculosApp.usuario.user">User</span></dt>
+        <dd>
+          <span>{{ usuario.user?.login }}</span>
+        </dd>
       </dl>
 
       <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">

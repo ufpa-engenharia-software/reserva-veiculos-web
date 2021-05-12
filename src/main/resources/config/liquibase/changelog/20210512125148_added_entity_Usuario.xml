@@ -47,6 +47,9 @@
             <column name="nivel_cnh" type="varchar(255)">
                 <constraints nullable="true" />
             </column>
+            <column name="user_id" type="bigint">
+                <constraints nullable="true" unique="true" uniqueConstraintName="ux_usuario__user_id" />
+            </column>
             <!-- jhipster-needle-liquibase-add-column - JHipster will add columns here -->
         </createTable>
         <dropDefaultValue tableName="usuario" columnName="criado" columnDataType="${datetimeType}"/>

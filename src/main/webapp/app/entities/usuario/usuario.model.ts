@@ -1,4 +1,5 @@
 import * as dayjs from 'dayjs';
+import { IUser } from 'app/entities/user/user.model';
 import { ISolicitacao } from 'app/entities/solicitacao/solicitacao.model';
 import { IVeiculo } from 'app/entities/veiculo/veiculo.model';
 import { PerfilUsuario } from 'app/entities/enumerations/perfil-usuario.model';
@@ -18,6 +19,7 @@ export interface IUsuario {
   ativo?: boolean | null;
   criado?: dayjs.Dayjs | null;
   nivelCNH?: NivelCNH | null;
+  user?: IUser | null;
   minhasSolicitacoes?: ISolicitacao[] | null;
   comoAutorizadors?: ISolicitacao[] | null;
   comoMotoristas?: ISolicitacao[] | null;
@@ -38,6 +40,7 @@ export class Usuario implements IUsuario {
     public ativo?: boolean | null,
     public criado?: dayjs.Dayjs | null,
     public nivelCNH?: NivelCNH | null,
+    public user?: IUser | null,
     public minhasSolicitacoes?: ISolicitacao[] | null,
     public comoAutorizadors?: ISolicitacao[] | null,
     public comoMotoristas?: ISolicitacao[] | null,

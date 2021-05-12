@@ -70,21 +70,21 @@ public class Solicitacao implements Serializable {
 
     @ManyToOne
     @JsonIgnoreProperties(
-        value = { "minhasSolicitacoes", "comoAutorizadors", "comoMotoristas", "veiculosHabilitados" },
+        value = { "user", "minhasSolicitacoes", "comoAutorizadors", "comoMotoristas", "veiculosHabilitados" },
         allowSetters = true
     )
     private Usuario solicitante;
 
     @ManyToOne
     @JsonIgnoreProperties(
-        value = { "minhasSolicitacoes", "comoAutorizadors", "comoMotoristas", "veiculosHabilitados" },
+        value = { "user", "minhasSolicitacoes", "comoAutorizadors", "comoMotoristas", "veiculosHabilitados" },
         allowSetters = true
     )
     private Usuario autorizador;
 
     @ManyToOne
     @JsonIgnoreProperties(
-        value = { "minhasSolicitacoes", "comoAutorizadors", "comoMotoristas", "veiculosHabilitados" },
+        value = { "user", "minhasSolicitacoes", "comoAutorizadors", "comoMotoristas", "veiculosHabilitados" },
         allowSetters = true
     )
     private Usuario motorista;

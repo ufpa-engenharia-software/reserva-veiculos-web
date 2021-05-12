@@ -66,6 +66,9 @@
           <th scope="col" jhiSortBy="nivelCNH">
             <span jhiTranslate="reservaVeiculosApp.usuario.nivelCNH">Nivel CNH</span> <fa-icon icon="sort"></fa-icon>
           </th>
+          <th scope="col" jhiSortBy="user.login">
+            <span jhiTranslate="reservaVeiculosApp.usuario.user">User</span> <fa-icon icon="sort"></fa-icon>
+          </th>
           <th scope="col"></th>
         </tr>
       </thead>
@@ -85,6 +88,9 @@
           <td>{{ usuario.ativo }}</td>
           <td>{{ usuario.criado | formatMediumDatetime }}</td>
           <td jhiTranslate="{{ 'reservaVeiculosApp.NivelCNH.' + usuario.nivelCNH }}">{{ usuario.nivelCNH }}</td>
+          <td>
+            {{ usuario.user?.login }}
+          </td>
           <td class="text-right">
             <div class="btn-group">
               <button
