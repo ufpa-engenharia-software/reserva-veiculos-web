@@ -1,0 +1,131 @@
+
+// Modelo baseado em audios originais de requisitos
+// audios originais em https://drive.google.com/drive/folders/1EuCmpsHoJLgXAdeLl-AI74B2ZTAgMIu9?usp=sharing
+// Projeto no GITHUB disponivel em https://github.com/ufpa-engenharia-software/campus-reserva-veiculos/
+//contrib VITOR GABRIEL [
+
+entity Usuario {
+	nome String required
+    perfil PerfilUsuario    
+    identificacao Identificador
+    nidentificao String    
+	cpf String     
+    email String
+    celular String
+    whatsapp Boolean    
+    ativo Boolean
+    criado ZonedDateTime
+    nivelCNH NivelCNH //so motorista
+}
+
+enum NivelCNH{
+	A, B , C, D, E
+}
+
+enum PerfilUsuario {
+   MOTORISTA, SETOR_TRANSPORTE, 
+   ADMINISTRACAO, ALUNO, PROFESSOR
+}
+
+enum Identificador {
+	SIAPE, 
+    MATRICULA_SIGAA,
+    CNH    
+}
+
+entity Fabricante {
+	nome String required
+    criado ZonedDateTime
+}
+
+entity Veiculo {
+    placa String required
+    modelo String
+    ano Integer
+    disponivel Boolean
+    criado ZonedDateTime    
+}
+
+entity Manutencao {
+	km Double
+    descricao TextBlob
+    custo Double
+}
+
+entity CategoriaVeiculo {	
+    nome String
+	capacidadePessoas Integer
+    capacidadePeso Double
+    capacidadeArea Double
+	eixos Integer
+    altura Double
+    nivelCNH NivelCNH    
+}
+
+entity Solicitacao {
+   origem String
+   destino String
+   dataSolicitacao ZonedDateTime
+   horarioSaida ZonedDateTime
+   horarioRetorno ZonedDateTime
+   distanciaEstimadaKm Double
+   justificativa TextBlob
+   status Status   
+   nPessoas Integer
+   peso Double
+    
+   // categoria   
+   // veiculo
+   // Usuario motorista
+   // Usuario solicitante
+   // Usuario autorizador
+}
+
+enum Status{
+	PENDENTE, DEFERIDO, INDEFERIDO
+}
+
+entity AvaliacaoSolicitacao {
+	valorGasolina Double
+    totalGasto Double
+    statusSolicitacao Status
+    justificativaStatus TextBlob
+}
+
+relationship OneToOne {
+	AvaliacaoSolicitacao{solicitacao} to Solicitacao{avaliacao}
+}
+relationship OneToMany
+{			
+	 Usuario{minhasSolicitacoes} to Solicitacao{solicitante(nome)}
+     Usuario{comoAutorizador} to Solicitacao{autorizador(nome)}
+     Usuario{comoMotorista} to Solicitacao{motorista(nome)}
+}
+relationship ManyToOne {
+	Veiculo{fabricante(nome)} to Fabricante
+    
+	Manutencao{veiculo(placa)} to Veiculo
+	Veiculo{categoria(nome)} to  CategoriaVeiculo
+    Solicitacao{categoria(nome)} to  CategoriaVeiculo
+    Solicitacao{veiculoAlocado(placa)} to Veiculo
+}
+relationship ManyToMany{
+	Veiculo{motoristasHabilitados(nome)} to Usuario{veiculosHabilitados(placa)}
+}
+
+// Set pagination options
+paginate * with pagination
+dto * with mapstruct
+service all with serviceImpl
+filter *
+
+//LISTAGEM DE REQUISITOS
+//Reserva de espaços físicos para reservas de veículos.
+//O sistema deve ter parâmetros de km, valor da gasolina, tipo dos veículos
+//A seleção dos veículos deverá ser feita por uma lista de seleção
+//O sistema deve ter uma agenda
+//Definir nível de acesso para inserção das informações, delimitar acesso dos usuários
+
+//Requitios Pendentes
+//Layout da webpage
+//Verificar com a professora Yomara.
